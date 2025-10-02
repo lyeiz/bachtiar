@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keluarga Cemara</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d1b2a; /* biru tua polos */
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: #1b263b; /* sedikit lebih terang */
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #00aaff; /* biru cerah */
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    .slide {
+      display: none;
+      padding: 50px 20px;
+      animation: slideIn 0.5s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    img {
+      max-width: 220px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .controls {
+      margin: 25px 0;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .controls button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      padding: 15px;
+      font-size: 14px;
+      background: #1b263b;
+      color: #b0c4de;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Keluarga Cemara</h1>
+    <nav>
+      <a href="#" onclick="goToSlide(0)">Emak</a>
+      <a href="#" onclick="goToSlide(1)">Bapak</a>
+      <a href="#" onclick="goToSlide(2)">Kakak</a>
+      <a href="#" onclick="goToSlide(3)">Aku</a>
+    </nav>
+  </header>
+
+  <!-- Slide Emak -->
+  <div class="slide active">
+    <h2>Emak</h2>
+    <img src="image/emak.png.jpg" alt="Foto Emak">
+    <p>Emak sibuk main HP seharian</p>
+  </div>
+
+  <!-- Slide Bapak -->
+  <div class="slide">
+    <h2>Bapak</h2>
+    <img src="image/bpk.jpg" alt="Foto Bapak">
+    <p>tukang tidur</p>
+  </div>
+
+  <!-- Slide Kakak -->
+  <div class="slide">
+    <h2>Kakak</h2>
+    <img src="image/kkk.jpg" alt="Foto Kakak">
+    <p>anak percobaan.</p>
+  </div>
+
+  <!-- Slide anak kedua -->
+  <div class="slide">
+    <h2>anak kedua</h2>
+    <img src="aku.png" alt="wajah terlalu tampan sehingga gabisa di foto oleh kamera biasa">
+    <p>terganteng sedunia rajin menabung</p>
+  </div>
+
+  <!-- Tombol kontrol -->
+  <div class="controls">
+    <button onclick="prevSlide()">⬅ Prev</button>
+    <button onclick="nextSlide()">Next ➡</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Keluarga Cemara. All rights reserved.
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach((s, i) => {
+        s.classList.remove('active');
+        if (i === index) s.classList.add('active');
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+    }
+  </script>
+</body>
+</html>
